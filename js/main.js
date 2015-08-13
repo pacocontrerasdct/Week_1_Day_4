@@ -1,3 +1,6 @@
+/************************************************************/
+/************************ BASIC *****************************/
+/************************************************************/
 // Triggering Event after click on button calculate at Basic Calc
 var clickButton = document.getElementById("basic-calc");
 clickButton.addEventListener("click", function()
@@ -31,7 +34,9 @@ clickButton.addEventListener("click", function()
   var resultBox = document.getElementById("basic-answer-alert");
   resultBox.innerHTML = 'Result: ' + result;
 });
-
+/***********************************************************/
+/************************ TRIP *****************************/
+/***********************************************************/
 // Triggering Event after click on button calculate at Trip Calc
 var clickButton = document.getElementById("trip-calc");
 clickButton.addEventListener("click", function()
@@ -62,7 +67,6 @@ clickButton.addEventListener("click", function()
     time = (parseFloat(tripNum1) / parseFloat(tripNum4)) / 60;
     money = (parseFloat(tripNum2)) / 100 * parseFloat(tripNum1) * parseFloat(tripNum3);
   }
-
   // Showing Result Box
   var basicAnswer = document.getElementById("trip-answer");
   basicAnswer.className = "show"
@@ -70,9 +74,92 @@ clickButton.addEventListener("click", function()
   // Placing result inside Result Box
   var resultBox = document.getElementById("trip-answer-alert");
   resultBox.innerHTML = 'Your trip will take ' + time + ' hours and cost $' + money;
-
-
 });
+/************************************************************/
+/************************ BMI *******************************/
+/************************************************************/
+// Triggering Event after click on button calculate at BMI Calc
+var clickButton = document.getElementById("bmi-calc");
+clickButton.addEventListener("click", function()
+{
+  // Hiding Result Box at Basic Calc
+  var basicAnswer = document.getElementById("basic-answer");
+  basicAnswer.className = "hide"
 
+  // Hiding Result Box at Trip Calc
+  var basicAnswer = document.getElementById("trip-answer");
+  basicAnswer.className = "hide"
+
+  // Getting Option Unit Value
+  var BMIUnit = (document.getElementById("bmi-units")).value;
+  // Getting Mass and Height
+  var BMIMass = (document.getElementById("bmi-height")).value;
+  var BMIHeight = (document.getElementById("bmi-mass")).value;
+
+  // Getting a result from Trip Calc
+  var BMIimperial;
+  var BMImetric;
+  var result;
+  // If select Imperial
+  if(BMIUnit == 'imperial'){
+    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight))) * 703 + " libras by square inch."; 
+  }
+  // If select Metric
+  else if(BMIUnit == 'metric'){
+    result = "Your Body Mass Index is " + parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight)) + " kilos by square metre.";   
+  }
+  else{}
+
+  // Showing Result Box
+  var basicAnswer = document.getElementById("bmi-answer");
+  basicAnswer.className = "show"
+
+  // Placing result inside Result Box
+  var resultBox = document.getElementById("bmi-answer-alert");
+  resultBox.innerHTML = result;
+});
+/************************************************************/
+/************************ MORGAGE *******************************/
+/************************************************************/
+// Triggering Event after click on button calculate at Mortgage Calc
+var clickButton = document.getElementById("mortgage-calc");
+clickButton.addEventListener("click", function()
+{
+  // Hiding Result Box at Basic Calc
+  var basicAnswer = document.getElementById("basic-answer");
+  basicAnswer.className = "hide"
+
+  // Hiding Result Box at Trip Calc
+  var basicAnswer = document.getElementById("trip-answer");
+  basicAnswer.className = "hide"
+
+  // Getting Option Unit Value
+  var BMIUnit = (document.getElementById("bmi-units")).value;
+  // Getting Mass and Height
+  var BMIMass = (document.getElementById("bmi-height")).value;
+  var BMIHeight = (document.getElementById("bmi-mass")).value;
+
+  // Getting a result from Trip Calc
+  var BMIimperial;
+  var BMImetric;
+  var result;
+  // If select Imperial
+  if(BMIUnit == 'imperial'){
+    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight))) * 703 + " libras by square inch."; 
+  }
+  // If select Metric
+  else if(BMIUnit == 'metric'){
+    result = "Your Body Mass Index is " + parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight)) + " kilos by square metre.";   
+  }
+  else{}
+
+  // Showing Result Box
+  var basicAnswer = document.getElementById("bmi-answer");
+  basicAnswer.className = "show"
+
+  // Placing result inside Result Box
+  var resultBox = document.getElementById("bmi-answer-alert");
+  resultBox.innerHTML = result;
+});
 
 
