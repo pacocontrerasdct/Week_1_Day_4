@@ -5,6 +5,16 @@
 var clickButton = document.getElementById("basic-calc");
 clickButton.addEventListener("click", function()
 {
+  // Hiding Other Boxes
+  var basicAnswer = document.getElementById("trip-answer");
+  basicAnswer.className = "hide";
+
+  var basicAnswer = document.getElementById("bmi-answer");
+  basicAnswer.className = "hide";
+
+  var basicAnswer = document.getElementById("mortgage-answer");
+  basicAnswer.className = "hide";
+
   // Getting First and Second Value and selected Basic Operation
   var basicNum1 = (document.getElementById("basic-num-1")).value;
   var basicOperation = (document.getElementById("basic-operation")).value;
@@ -28,7 +38,7 @@ clickButton.addEventListener("click", function()
   }  
   // Showing Result Box
   var basicAnswer = document.getElementById("basic-answer");
-  basicAnswer.className = "show"
+  basicAnswer.className = "show";
 
   // Placing result inside Result Box
   var resultBox = document.getElementById("basic-answer-alert");
@@ -41,9 +51,15 @@ clickButton.addEventListener("click", function()
 var clickButton = document.getElementById("trip-calc");
 clickButton.addEventListener("click", function()
 {
-  // Hiding Result Box at Basic Calc
+  // Hiding Other Boxes
   var basicAnswer = document.getElementById("basic-answer");
-  basicAnswer.className = "hide"
+  basicAnswer.className = "hide";
+
+  var basicAnswer = document.getElementById("bmi-answer");
+  basicAnswer.className = "hide";
+
+    var basicAnswer = document.getElementById("mortgage-answer");
+  basicAnswer.className = "hide";
 
    // Getting 1st, 2nd, 3rd and 4th Values
   var tripNum1 = (document.getElementById("trip-distance")).value;
@@ -51,7 +67,7 @@ clickButton.addEventListener("click", function()
   var tripNum3 = (document.getElementById("trip-cost")).value;
   var tripNum4 = (document.getElementById("trip-speed")).value;
 
-  // Getting a result from Trip Calc
+  // Declare Variables
   var time;
   var money;
   // If Speed is over 60 MPH, For every 1 MPH over 60 MPH, reduce the MPG by 2 MPG
@@ -69,7 +85,7 @@ clickButton.addEventListener("click", function()
   }
   // Showing Result Box
   var basicAnswer = document.getElementById("trip-answer");
-  basicAnswer.className = "show"
+  basicAnswer.className = "show";
 
   // Placing result inside Result Box
   var resultBox = document.getElementById("trip-answer-alert");
@@ -82,13 +98,15 @@ clickButton.addEventListener("click", function()
 var clickButton = document.getElementById("bmi-calc");
 clickButton.addEventListener("click", function()
 {
-  // Hiding Result Box at Basic Calc
+  // Hiding Other Boxes
   var basicAnswer = document.getElementById("basic-answer");
-  basicAnswer.className = "hide"
+  basicAnswer.className = "hide";
 
-  // Hiding Result Box at Trip Calc
   var basicAnswer = document.getElementById("trip-answer");
-  basicAnswer.className = "hide"
+  basicAnswer.className = "hide";
+
+  var basicAnswer = document.getElementById("mortgage-answer");
+  basicAnswer.className = "hide";
 
   // Getting Option Unit Value
   var BMIUnit = (document.getElementById("bmi-units")).value;
@@ -96,17 +114,17 @@ clickButton.addEventListener("click", function()
   var BMIMass = (document.getElementById("bmi-height")).value;
   var BMIHeight = (document.getElementById("bmi-mass")).value;
 
-  // Getting a result from Trip Calc
+  // Declare Variables
   var BMIimperial;
   var BMImetric;
   var result;
   // If select Imperial
   if(BMIUnit == 'imperial'){
-    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight))) * 703 + " libras by square inch."; 
+    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2)) * 703 + " libras by square inch."; 
   }
   // If select Metric
   else if(BMIUnit == 'metric'){
-    result = "Your Body Mass Index is " + parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight)) + " kilos by square metre.";   
+    result = "Your Body Mass Index is " + parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2) + " kilos by square metre.";   
   }
   else{}
 
@@ -125,40 +143,38 @@ clickButton.addEventListener("click", function()
 var clickButton = document.getElementById("mortgage-calc");
 clickButton.addEventListener("click", function()
 {
-  // Hiding Result Box at Basic Calc
+  // Hiding Other Boxes
   var basicAnswer = document.getElementById("basic-answer");
-  basicAnswer.className = "hide"
+  basicAnswer.className = "hide";
 
-  // Hiding Result Box at Trip Calc
   var basicAnswer = document.getElementById("trip-answer");
-  basicAnswer.className = "hide"
+  basicAnswer.className = "hide";
 
-  // Getting Option Unit Value
-  var BMIUnit = (document.getElementById("bmi-units")).value;
-  // Getting Mass and Height
-  var BMIMass = (document.getElementById("bmi-height")).value;
-  var BMIHeight = (document.getElementById("bmi-mass")).value;
+  var basicAnswer = document.getElementById("bmi-answer");
+  basicAnswer.className = "hide";
 
-  // Getting a result from Trip Calc
-  var BMIimperial;
-  var BMImetric;
+  // Getting Values from input
+  var mortgageLoan = (document.getElementById("mortgage-loan")).value;
+  var mortgageApr = (document.getElementById("mortgage-apr")).value;
+  var mortgageTerm = (document.getElementById("mortgage-term")).value;
+
+  // Declare Variables
+  var Loan = parseFloat(mortgageLoan);
+  var Apr = (parseFloat(mortgageApr) / 100) /12;
+  var Term = parseFloat(mortgageTerm);
+  var brackets;
   var result;
-  // If select Imperial
-  if(BMIUnit == 'imperial'){
-    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight))) * 703 + " libras by square inch."; 
-  }
-  // If select Metric
-  else if(BMIUnit == 'metric'){
-    result = "Your Body Mass Index is " + parseFloat(BMIMass) / (parseFloat(BMIHeight) * parseFloat(BMIHeight)) + " kilos by square metre.";   
-  }
-  else{}
+
+  // Getting a Result
+  brackets = Math.pow((1 + Apr), Term);
+  result = 'Your Monthly Payment would be ' + (Loan * (Apr * brackets)) / (brackets - 1) + ' pounds.';
 
   // Showing Result Box
-  var basicAnswer = document.getElementById("bmi-answer");
-  basicAnswer.className = "show"
+  var basicAnswer = document.getElementById("mortgage-answer");
+  basicAnswer.className = "show";
 
   // Placing result inside Result Box
-  var resultBox = document.getElementById("bmi-answer-alert");
+  var resultBox = document.getElementById("mortgage-answer-alert");
   resultBox.innerHTML = result;
 });
 
