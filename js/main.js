@@ -54,15 +54,22 @@ clickButton.addEventListener("click", function()
     var newFuelEffic = parseFloat(tripNum4) - 60;
     newMPG = parseFloat(tripNum2) - (newFuelEffic * 2);
     
-    time = parseFloat(tripNum1) / parseFloat(tripNum4);
+    time = (parseFloat(tripNum1) / parseFloat(tripNum4)) / 60;
     money = parseFloat(newMPG) * parseFloat(tripNum1) * parseFloat(tripNum3);
   }
   // If Speed is 60 MPH or less
   else{
-    time = parseFloat(tripNum1) / parseFloat(tripNum4);
-    money = parseFloat(tripNum2) * parseFloat(tripNum1) * parseFloat(tripNum3);
+    time = (parseFloat(tripNum1) / parseFloat(tripNum4)) / 60;
+    money = (parseFloat(tripNum2)) / 100 * parseFloat(tripNum1) * parseFloat(tripNum3);
   }
 
+  // Showing Result Box
+  var basicAnswer = document.getElementById("trip-answer");
+  basicAnswer.className = "show"
+
+  // Placing result inside Result Box
+  var resultBox = document.getElementById("trip-answer-alert");
+  resultBox.innerHTML = 'Your trip will take ' + time + ' hours and cost $' + money;
 
 
 });
