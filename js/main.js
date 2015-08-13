@@ -42,7 +42,7 @@ clickButton.addEventListener("click", function()
 
   // Placing result inside Result Box
   var resultBox = document.getElementById("basic-answer-alert");
-  resultBox.innerHTML = 'Result: ' + result;
+  resultBox.innerHTML = 'Result: ' + result.toFixed(2);
 });
 /***********************************************************/
 /************************ TRIP *****************************/
@@ -89,7 +89,7 @@ clickButton.addEventListener("click", function()
 
   // Placing result inside Result Box
   var resultBox = document.getElementById("trip-answer-alert");
-  resultBox.innerHTML = 'Your trip will take ' + time + ' hours and cost $' + money;
+  resultBox.innerHTML = 'Your trip will take ' + time.toFixed(2) + ' hours and cost $' + money.toFixed(2);
 });
 /************************************************************/
 /************************ BMI *******************************/
@@ -111,20 +111,20 @@ clickButton.addEventListener("click", function()
   // Getting Option Unit Value
   var BMIUnit = (document.getElementById("bmi-units")).value;
   // Getting Mass and Height
-  var BMIMass = (document.getElementById("bmi-height")).value;
-  var BMIHeight = (document.getElementById("bmi-mass")).value;
+  var BMIHeight = (document.getElementById("bmi-height")).value;
+  var BMIMass = (document.getElementById("bmi-mass")).value;
 
   // Declare Variables
-  var BMIimperial;
-  var BMImetric;
+  var BMIimperial = parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2) * 703;
+  var BMImetric = parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2);
   var result;
   // If select Imperial
-  if(BMIUnit == 'imperial'){
-    result = "Your Body Mass Index is " + (parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2)) * 703 + " libras by square inch."; 
+  if(BMIUnit === 'imperial'){
+    result = "Your Body Mass Index is " + BMIimperial.toFixed(2) + " libras by square inch."; 
   }
   // If select Metric
-  else if(BMIUnit == 'metric'){
-    result = "Your Body Mass Index is " + parseFloat(BMIMass) / Math.pow(parseFloat(BMIHeight), 2) + " kilos by square metre.";   
+  else if(BMIUnit === 'metric'){
+    result = "Your Body Mass Index is " + BMImetric.toFixed(2) + " kilos by square metre.";   
   }
   else{}
 
@@ -167,7 +167,8 @@ clickButton.addEventListener("click", function()
 
   // Getting a Result
   brackets = Math.pow((1 + Apr), Term);
-  result = 'Your Monthly Payment would be ' + (Loan * (Apr * brackets)) / (brackets - 1) + ' pounds.';
+  formula = (Loan * (Apr * brackets)) / (brackets - 1);
+  result = 'Your Monthly Payment would be ' + formula.toFixed(2) + ' pounds.';
 
   // Showing Result Box
   var basicAnswer = document.getElementById("mortgage-answer");
@@ -177,5 +178,3 @@ clickButton.addEventListener("click", function()
   var resultBox = document.getElementById("mortgage-answer-alert");
   resultBox.innerHTML = result;
 });
-
-
